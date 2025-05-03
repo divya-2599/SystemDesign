@@ -1,10 +1,8 @@
 package org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.impl;
 
-
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Coin;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingMachine;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.impl.HasMoneyState;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Coin;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Item;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingMachine;
 import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.State;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class IdleState implements State {
 
     @Override
     public void clickOnInsertCoinButton(VendingMachine vendingMachine) {
-        vendingMachine.setVendingMachineState(new HasMoneyState());
+        vendingMachine.setVendingState(new HasMoneyState());
     }
 
     @Override

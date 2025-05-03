@@ -1,8 +1,9 @@
 package org.designPattern.BehaviouralDesignPattern.StateDesignPattern;
 
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.ItemShelf;
 
+import lombok.Data;
+
+@Data
 public class Inventory {
     private ItemShelf[] itemShelf;
     public Inventory(int noOfItems) {

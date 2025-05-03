@@ -1,10 +1,8 @@
 package org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.impl;
 
-
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Coin;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingMachine;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.impl.DispenseState;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Coin;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Item;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingMachine;
 import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.State;
 
 public class SelectionState implements State {
@@ -29,11 +27,11 @@ public class SelectionState implements State {
 
     @Override
     public void chooseProduct(VendingMachine vendingMachine, int code) throws Exception {
-        org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item item = vendingMachine.getInventory().getItem(code);
+        Item item = vendingMachine.getInventory().getItem(code);
         int paidByUser = 0;
         int amount = 0;
         for(Coin coin : vendingMachine.getCoins()) {
-            amount += coin.getValue();
+            amount += coin.getCoin();
         }
         if(item.getPrice()>amount) {
             refundAllMoney(vendingMachine);
@@ -42,7 +40,7 @@ public class SelectionState implements State {
             if(item.getPrice()<amount) {
                 getChange(amount- item.getPrice());
             }
-            vendingMachine.setVendingMachineState(new DispenseState());
+            vendingMachine.setVendingState(new DispenseState());
         }
     }
 
@@ -60,7 +58,7 @@ public class SelectionState implements State {
     public int refundAllMoney(VendingMachine vendingMachine) {
         int amount=0;
         for(Coin coin : vendingMachine.getCoins()) {
-            amount += coin.getValue();
+            amount += coin.getCoin();
         }
         return amount;
     }

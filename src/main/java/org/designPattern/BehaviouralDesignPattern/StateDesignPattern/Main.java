@@ -1,11 +1,7 @@
 package org.designPattern.BehaviouralDesignPattern.StateDesignPattern;
 
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Coin;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.ItemShelf;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.ItemType;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingMachine;
 
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.State;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,18 +12,18 @@ public class Main {
             System.out.println("|" + "displaying the inventory 1" + "|");
             displayInventory(vendingMachine);
             System.out.println("here");
-            org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.State vendingState = vendingMachine.getVendingMachineState();
+            State vendingState = vendingMachine.getVendingState();
             System.out.println("state is : " + vendingState);
             vendingState.clickOnInsertCoinButton(vendingMachine);
-            vendingState = (org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.State) vendingMachine.getVendingMachineState();
+            vendingState = (State) vendingMachine.getVendingState();
             vendingState.insertCoin(vendingMachine, Coin.QUARTER);
             vendingState.insertCoin(vendingMachine, Coin.DIME);
             vendingState.insertCoin(vendingMachine, Coin.NICKEL);
             vendingState.clickOnSelectProductButton(vendingMachine);
-            vendingState = (org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.State) vendingMachine.getVendingMachineState();
+            vendingState = (State) vendingMachine.getVendingState();
             vendingState.chooseProduct(vendingMachine, 102);
-            vendingState = (org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.State) vendingMachine.getVendingMachineState();
-            vendingState.dispenseProduct(vendingMachine, 102);
+            vendingState = (State) vendingMachine.getVendingState();
+            vendingState.despenseProduct(vendingMachine, 102);
             System.out.println("|" + "displaying the inventory 2" + "|");
             displayInventory(vendingMachine);
         } catch (Exception e) {
@@ -45,10 +41,10 @@ public class Main {
                 item.setItemType(ItemType.PEPSI);
                 item.setPrice(10);
             }else if(i>=4 && i<=7) {
-                item.setItemType(ItemType.SODA);
+                item.setItemType(ItemType.COKE);
                 item.setPrice(20);
             }else{
-                item.setItemType(ItemType.JUICE);
+                item.setItemType(ItemType.MAZA);
                 item.setPrice(30);
             }
             itemShelf1[i].setItem(item);

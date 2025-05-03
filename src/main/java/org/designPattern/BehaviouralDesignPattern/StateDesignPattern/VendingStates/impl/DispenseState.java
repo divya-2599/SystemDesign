@@ -1,11 +1,8 @@
 package org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.impl;
 
-
-
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Coin;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingMachine;
-import org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.VendingStates.impl.IdleState;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Coin;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.Item;
+import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingMachine;
 import org.designPattern.BehaviouralDesignPattern.StateDesignPattern.VendingStates.State;
 
 public class DispenseState implements State {
@@ -36,9 +33,9 @@ public class DispenseState implements State {
 
     @Override
     public Item despenseProduct(VendingMachine vendingMachine, int code) throws Exception {
-        org.example.BehaviouralDesignPattern.VendingMachineStateDesignPattern.Item item = vendingMachine.getInventory().getItem(code);
+        Item item = vendingMachine.getInventory().getItem(code);
         vendingMachine.getInventory().updateSoldOutItem(code);
-        vendingMachine.setVendingMachineState(new IdleState(vendingMachine));
+        vendingMachine.setVendingState(new IdleState(vendingMachine));
         return item;
     }
 
