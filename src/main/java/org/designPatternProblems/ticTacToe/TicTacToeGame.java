@@ -57,31 +57,26 @@ public class TicTacToeGame {
     }
 
     public boolean isThereWinner(int row, int column, PieceType pieceType) {
-        boolean rowMatch = true;
-        boolean colMatch = true;
-        boolean diagonalMatch = true;
-        boolean antiDiagonalMatch = true;
-        // check for row
-        for(int j=0;j<board.size; j++) {
-            if(board.playingPieces[row][j] == null || board.playingPieces[row][j].pieceType!=pieceType) {
+        boolean rowMatch = true, colMatch = true, diagonalMatch = true, antiDiagonalMatch = true;
+
+        for (int i = 0; i < board.size; i++) {
+            // Check row and column
+            if (board.playingPieces[row][i] == null || board.playingPieces[row][i].pieceType != pieceType) {
                 rowMatch = false;
             }
-        }
-        for(int i=0;i< board.size;i++) {
-            if(board.playingPieces[i][column] == null || board.playingPieces[i][column].pieceType!=pieceType) {
+            if (board.playingPieces[i][column] == null || board.playingPieces[i][column].pieceType != pieceType) {
                 colMatch = false;
             }
-        }
-        for(int i=0;i< board.size;i++) {
-            if(board.playingPieces[i][i] == null || board.playingPieces[i][i].pieceType != pieceType) {
+            // Check diagonal
+            if (board.playingPieces[i][i] == null || board.playingPieces[i][i].pieceType != pieceType) {
                 diagonalMatch = false;
             }
-        }
-        for(int i=0;i< board.size;i++) {
-            if(board.playingPieces[i][board.size-i-1] == null || board.playingPieces[i][board.size-i-1].pieceType != pieceType) {
+            // Check anti-diagonal
+            if (board.playingPieces[i][board.size - i - 1] == null || board.playingPieces[i][board.size - i - 1].pieceType != pieceType) {
                 antiDiagonalMatch = false;
             }
         }
+
         return rowMatch || colMatch || diagonalMatch || antiDiagonalMatch;
     }
 }
